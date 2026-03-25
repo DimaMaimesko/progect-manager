@@ -6,6 +6,7 @@ namespace App\Model\User\UseCase\SignUp\Request;
 
 use App\Model\User\Entity\User\User;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Uid\Uuid;
 
 class Handler
 {
@@ -25,6 +26,8 @@ class Handler
         }
 
         $user = new User(
+            Uuid::v7()->toString(),
+            new \DateTimeImmutable(),
             $email,
             password_hash($command->password, PASSWORD_ARGON2I)
         );
