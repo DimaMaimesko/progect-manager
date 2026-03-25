@@ -3,16 +3,19 @@
 {% block title %}VictoriousPuppy index{% endblock %}
 
 {% block body %}
-    <h1>VictoriousPuppy index</h1>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>VictoriousPuppy index</h1>
+        <a href="{{ path('app_victorious_puppy_new') }}" class="btn btn-primary">+ Create new</a>
+    </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Value</th>
-                <th>actions</th>
-            </tr>
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Value</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for victorious_puppy in victorious_puppies %}
@@ -21,17 +24,15 @@
                 <td>{{ victorious_puppy.name }}</td>
                 <td>{{ victorious_puppy.value }}</td>
                 <td>
-                    <a href="{{ path('app_victorious_puppy_show', {'id': victorious_puppy.id}) }}">show</a>
-                    <a href="{{ path('app_victorious_puppy_edit', {'id': victorious_puppy.id}) }}">edit</a>
+                    <a href="{{ path('app_victorious_puppy_show', {'id': victorious_puppy.id}) }}" class="btn btn-sm btn-info">show</a>
+                    <a href="{{ path('app_victorious_puppy_edit', {'id': victorious_puppy.id}) }}" class="btn btn-sm btn-secondary">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4" class="text-center text-muted">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_victorious_puppy_new') }}">Create new</a>
 {% endblock %}

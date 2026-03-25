@@ -23,7 +23,9 @@ RUN <<-EOF
 	apt-get update
 	apt-get install -y --no-install-recommends \
 		file \
-		git
+		git \
+		nodejs \
+        npm
 	install-php-extensions \
 		@composer \
 		apcu \

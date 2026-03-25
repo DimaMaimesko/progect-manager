@@ -3,11 +3,14 @@
 {% block title %}Edit VictoriousPuppy{% endblock %}
 
 {% block body %}
-    <h1>Edit VictoriousPuppy</h1>
+    <div style="max-width: 500px;">
+        <h1>Edit VictoriousPuppy</h1>
 
-    {{ include('victorious_puppy/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('victorious_puppy/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_victorious_puppy_index') }}">back to list</a>
-
-    {{ include('victorious_puppy/_delete_form.html.twig') }}
+        <div class="mt-3 d-flex gap-2">
+            <a href="{{ path('app_victorious_puppy_index') }}" class="btn btn-secondary">back to list</a>
+            {{ include('victorious_puppy/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}
