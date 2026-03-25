@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit VictoriousPuppy{% endblock %}
+
+{% block body %}
+    <h1>Edit VictoriousPuppy</h1>
+
+    {{ include('victorious_puppy/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_victorious_puppy_index') }}">back to list</a>
+
+    {{ include('victorious_puppy/_delete_form.html.twig') }}
+{% endblock %}

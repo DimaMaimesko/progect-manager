@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}VictoriousPuppy index{% endblock %}
+
+{% block body %}
+    <h1>VictoriousPuppy index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Value</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for victorious_puppy in victorious_puppies %}
+            <tr>
+                <td>{{ victorious_puppy.id }}</td>
+                <td>{{ victorious_puppy.name }}</td>
+                <td>{{ victorious_puppy.value }}</td>
+                <td>
+                    <a href="{{ path('app_victorious_puppy_show', {'id': victorious_puppy.id}) }}">show</a>
+                    <a href="{{ path('app_victorious_puppy_edit', {'id': victorious_puppy.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_victorious_puppy_new') }}">Create new</a>
+{% endblock %}
