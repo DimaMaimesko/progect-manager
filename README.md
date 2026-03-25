@@ -55,4 +55,8 @@ docker compose down
 docker compose build --no-cache
 docker compose up --wait
 docker exec -it symfony-docker-php-1 bash
+
 php bin/console doctrine:database:create
+php bin/console make:entity
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
