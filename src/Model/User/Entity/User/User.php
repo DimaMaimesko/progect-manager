@@ -5,48 +5,33 @@ declare(strict_types=1);
 namespace App\Model\User\Entity\User;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 
+#[ORM\Entity]
+#[ORM\Table(name: 'user_users')]
 class User
 {
     private const STATUS_NEW = 'new';
     private const STATUS_WAIT = 'wait';
     private const STATUS_ACTIVE = 'active';
 
-    /**
-     * @var Id
-     */
+    #[ORM\Column(type: 'user_user_id')]
     private $id;
-    /**
-     * @var \DateTimeImmutable
-     */
+    #[ORM\Column(type: 'datetime_immutable')]
     private $date;
-    /**
-     * @var Email|null
-     */
-    private $email;
-    /**
-     * @var string|null
-     */
+    #[ORM\Column(type: 'user_user_email', nullable: true)]
+    private ?Email $email = null;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $passwordHash;
-    /**
-     * @var string|null
-     */
-    private $confirmToken;
-    /**
-     * @var ResetToken|null
-     */
-    private $resetToken;
-    /**
-     * @var string
-     */
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $confirmToken = null;
+    #[ORM\Embedded(class: ResetToken::class)]
+    private ?ResetToken $resetToken = null;
+    #[ORM\Column(type: 'string', length: 16)]
     private $status;
-    /**
-     * @var Role
-     */
+    #[ORM\Column(type: 'user_user_role')]
     private $role;
-    /**
-     * @var Network[]|ArrayCollection
-     */
+    #[ORM\OneToMany(targetEntity: Network::class, mappedBy: 'user', cascade: ['all'], orphanRemoval: true)]
     private $networks;
 
     private function __construct(Id $id, \DateTimeImmutable $date)
@@ -186,4 +171,13 @@ class User
     {
         return $this->networks->toArray();
     }
+
+    #[ORM\PostLoad]
+    public function checkEmbeds(): void
+    {
+        if ($this->resetToken->isEmpty()) {
+            $this->resetToken = null;
+        }
+    }
+
 }
