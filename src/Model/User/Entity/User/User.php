@@ -15,6 +15,7 @@ class User
     private const STATUS_WAIT = 'wait';
     private const STATUS_ACTIVE = 'active';
 
+    #[ORM\Id]
     #[ORM\Column(type: 'user_user_id')]
     private $id;
     #[ORM\Column(type: 'datetime_immutable')]
