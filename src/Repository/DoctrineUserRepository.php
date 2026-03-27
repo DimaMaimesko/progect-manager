@@ -7,8 +7,9 @@ use App\Model\User\Entity\User\Email;
 use App\Model\User\Entity\User\Id;
 use App\Model\User\Entity\User\User;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Model\User\Entity\User\UserRepository;
 
-class DocrtineUserRepository implements \App\Model\User\Entity\User\UserRepository
+class DoctrineUserRepository implements UserRepository
 {
     private $em;
     /**

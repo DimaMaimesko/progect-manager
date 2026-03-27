@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block body %}
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-sm-8 col-md-6 col-lg-4">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <h4 class="card-title text-center mb-4">Create an Account</h4>
+
+                    {{ form_start(form, { attr: { novalidate: 'novalidate' } }) }}
+
+                    <div class="mb-3">
+                        {{ form_label(form.email, 'Email address', { label_attr: { class: 'form-label' } }) }}
+                        {{ form_widget(form.email, { attr: { class: 'form-control' ~ (form.email.vars.errors|length ? ' is-invalid' : ''), placeholder: 'you@example.com' } }) }}
+                        {{ form_errors(form.email) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(form.password, 'Password', { label_attr: { class: 'form-label' } }) }}
+                        {{ form_widget(form.password, { attr: { class: 'form-control' ~ (form.password.vars.errors|length ? ' is-invalid' : ''), placeholder: '••••••••' } }) }}
+                        {{ form_errors(form.password) }}
+                    </div>
+
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </div>
+
+                    {{ form_end(form) }}
+
+                    <div class="text-center mt-3">
+{#                        <small class="text-muted">Already have an account? <a href="{{ path('app_login') }}">Log in</a></small>#}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
