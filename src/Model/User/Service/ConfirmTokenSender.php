@@ -21,7 +21,7 @@ class ConfirmTokenSender
     public function send(Email $email, string $token): void
     {
         $this->mailer->send(new NotificationEmail()
-            ->subject('New comment posted')
+            ->subject('Confirm your email')
             ->htmlTemplate('mail/user/signup-confirm.html.twig')
             ->from($this->adminEmail)
             ->to($email->getValue())
