@@ -27,4 +27,10 @@ services:
     # please note that last definitions always *replace* previous ones
     App\Model\User\Entity\User\UserRepository:
         class: App\Repository\DoctrineUserRepository
+    reset_tokenizer.interval:
+        class: DateInterval
+        arguments: ['P1D']
 
+    App\Model\User\Service\ResetTokenizer:
+        arguments:
+            $interval: '@reset_tokenizer.interval'

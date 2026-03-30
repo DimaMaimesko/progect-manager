@@ -20,7 +20,7 @@ class ResetTokenizer
     {
         return new ResetToken(
             Uuid::v7()->toString(),
-            (new \DateTimeImmutable())->add($this->interval)
+            new \DateTimeImmutable()->add($this->interval)
         );
     }
 }

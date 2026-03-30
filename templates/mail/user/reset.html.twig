@@ -1,0 +1,23 @@
+{#{% extends 'mail.html.twig' %}#}
+
+{#{% block body %}#}
+
+{#    <p>Password Reset Link:</p>#}
+
+{#    {% set url = url('auth.reset.reset', {'token': token}) %}#}
+
+{#    <p><a href="{{ url }}">{{ url }}</a></p>#}
+
+{#{% endblock %}#}
+{% extends '@email/default/notification/body.html.twig' %}
+
+{% block content %}
+    <p>>Password Reset Link:</p>
+{% endblock %}
+
+{% block action %}
+    <spacer size="16"></spacer>
+    {% set url = url('auth.reset.reset', {'token': token}) %}
+
+    <p><a href="{{ url }}">{{ url }}</a></p>
+{% endblock %}
