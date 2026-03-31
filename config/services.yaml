@@ -34,3 +34,4 @@ services:
     App\Model\User\Service\ResetTokenizer:
         arguments:
             $interval: '@reset_tokenizer.interval'
+

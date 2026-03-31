@@ -5,6 +5,7 @@
         "@popperjs/core": "^2.11.8",
         "@symfony/webpack-encore": "^5.1.0",
         "core-js": "^3.38.0",
+        "file-loader": "^6.2.0",
         "jquery": "^4.0.0",
         "regenerator-runtime": "^0.13.9",
         "sass": "^1.98.0",
@@ -18,9 +19,15 @@
         "dev-server": "encore dev-server",
         "dev": "encore dev",
         "watch": "encore dev --watch",
-        "build": "encore production --progress"
+        "build": "NODE_ENV=production encore production"
     },
     "dependencies": {
-        "bootstrap": "^5.3.8"
+        "@coreui/chartjs": "^4.2.0",
+        "@coreui/coreui": "^5.6.1",
+        "@coreui/icons": "^3.0.1",
+        "@coreui/utils": "^2.0.2",
+        "bootstrap": "^5.3.8",
+        "chart.js": "^4.5.1",
+        "simplebar": "^6.3.3"
     }
 }

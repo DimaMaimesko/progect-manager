@@ -15,6 +15,8 @@ require('bootstrap');
 // or you can include specific pieces
 // require('bootstrap/js/dist/tooltip');
 // require('bootstrap/js/dist/popover');
+// require("@coreui/coreui");
+// import '@coreui/coreui/dist/js/coreui.bundle.min.js';
 
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();

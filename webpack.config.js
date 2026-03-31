@@ -61,7 +61,10 @@ Encore
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
-
+    .copyFiles({
+        from: './node_modules/@coreui/icons/svg',
+        to: 'vendors/@coreui/icons/svg/[path][name].[ext]',
+    })
     // uncomment if you use React
     //.enableReactPreset()
 

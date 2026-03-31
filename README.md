@@ -64,3 +64,18 @@ php bin/console doctrine:migrations:migrate
 php bin/phpunit
 
 php bin/console doctrine:fixtures:load
+
+The test database won't have tables or data unless you set it up. You need to run these commands once before running tests (or in a CI pipeline):
+# Create the test database
+php bin/console doctrine:database:create --env=test
+
+# Run migrations to create the schema
+php bin/console doctrine:migrations:migrate --env=test --no-interaction
+
+# Load fixtures (the admin@app.test user)
+php bin/console doctrine:fixtures:load --env=test --no-interaction
+
+
+docker compose logs -f manager-node-watch
+
+docker compose up -d --build --force-recreate php
