@@ -1,12 +1,12 @@
 {% extends '@email/default/notification/body.html.twig' %}
 
 {% block content %}
-    <p>Sign Up confirm link:</p>
+    <p>Email change link:</p>
 {% endblock %}
 
 {% block action %}
     <spacer size="16"></spacer>
-    {% set url = url('auth.signup.confirm', {'token': token}) %}
+    {% set url = url('profile.email.confirm', {'token': token}) %}
 
     <p><a href="{{ url }}">{{ url }}</a></p>
 {% endblock %}

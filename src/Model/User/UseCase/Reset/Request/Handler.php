@@ -7,7 +7,7 @@ namespace App\Model\User\UseCase\Reset\Request;
 use App\Model\Flusher;
 use App\Model\User\Entity\User\Email;
 use App\Model\User\Entity\User\UserRepository;
-use App\Model\User\Service\ResetTokenizer;
+use App\Model\User\Service\ResetTokenGenerator;
 use App\Model\User\Service\ResetTokenSender;
 
 class Handler
@@ -19,7 +19,7 @@ class Handler
 
     public function __construct(
         UserRepository $users,
-        ResetTokenizer $tokenizer,
+        ResetTokenGenerator $tokenizer,
         Flusher $flusher,
         ResetTokenSender $sender
     )

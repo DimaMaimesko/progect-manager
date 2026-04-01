@@ -31,7 +31,7 @@ services:
         class: DateInterval
         arguments: ['P1D']
 
-    App\Model\User\Service\ResetTokenizer:
+    App\Model\User\Service\ResetTokenGenerator:
         arguments:
             $interval: '@reset_tokenizer.interval'
 

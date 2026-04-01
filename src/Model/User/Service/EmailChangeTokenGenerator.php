@@ -6,7 +6,7 @@ namespace App\Model\User\Service;
 
 use Symfony\Component\Uid\Uuid;
 
-class SignUpConfirmTokenizer
+class EmailChangeTokenGenerator
 {
     public function generate(): string
     {

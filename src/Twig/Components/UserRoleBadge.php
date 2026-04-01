@@ -4,8 +4,8 @@ namespace App\Twig\Components;
 
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsTwigComponent('user_status_badge')]
-class UserStatusBadge
+#[AsTwigComponent('user_role_badge')]
+class UserRoleBadge
 {
-    public string $status;
+    public string $role;
 }

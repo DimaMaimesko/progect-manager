@@ -27,7 +27,10 @@
                     {% if user.email %}
                         <tr>
                             <th>Email</th>
-                            <td>{{ user.email }}</td>
+                            <td>
+                                {{ user.email }}
+                                <a href="{{ path('profile.email') }}" class="btn btn-sm btn-outline-danger">Change</a>
+                            </td>
                         </tr>
                     {% endif %}
                     <tr>

@@ -7,7 +7,7 @@ namespace App\Model\User\Service;
 use App\Model\User\Entity\User\ResetToken;
 use Symfony\Component\Uid\Uuid;
 
-class ResetTokenizer
+class ResetTokenGenerator
 {
     private $interval;
 
