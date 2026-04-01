@@ -4,12 +4,17 @@ declare(strict_types=1);
 
 namespace App\ReadModel\User;
 
-class AuthView
+class DetailView
 {
+    /**
+     * @var NetworkView[]
+     */
+    public array $networks = [];
+
     public function __construct(
         public ?string $id = null,
+        public ?string $date = null,
         public ?string $email = null,
-        public ?string $password_hash = null,
         public ?string $role = null,
         public ?string $status = null,
     ) {
@@ -19,8 +24,8 @@ class AuthView
     {
         return new self(
             id: $data['id'],
+            date: $data['date'],
             email: $data['email'],
-            password_hash: $data['password_hash'],
             role: $data['role'],
             status: $data['status'],
         );

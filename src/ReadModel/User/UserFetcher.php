@@ -47,12 +47,42 @@ class UserFetcher
             return null;
         }
 
-        $view = new AuthView();
-        $view->id = $result['id'];
-        $view->email = $result['email'];
-        $view->password_hash = $result['password_hash'];
-        $view->role = $result['role'];
-        $view->status = $result['status'];
+        $view = AuthView::fromDatabase($result);
+
+        return $view;
+    }
+
+    public function findDetail(string $id): ?DetailView
+    {
+        $stmt = $this->connection->createQueryBuilder()
+            ->select(
+                'id',
+                'date',
+                'email',
+                'role',
+                'status'
+            )
+            ->from('user_users')
+            ->where('id = :id')
+            ->setParameter('id', $id)
+            ->executeQuery()->fetchAssociative();
+
+        if ($stmt === false) {
+            return null;
+        }
+        $view = DetailView::fromDatabase($stmt);
+
+
+        $stmt = $this->connection->createQueryBuilder()
+            ->select('network', 'identity')
+            ->from('user_user_networks')
+            ->where('user_id = :id')
+            ->setParameter('id', $id)
+            ->executeQuery()->fetchAssociative();
+
+        if ($stmt !== false) {
+            $view->networks = NetworkView::fromDatabase($stmt);
+        }
 
         return $view;
     }
